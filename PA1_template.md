@@ -132,8 +132,8 @@ plotData <- aggregate(dataImputed$steps,by=list(dataImputed$wd, dataImputed$inte
 
 
 par(mfrow = c(2,1))
-plot(plotData$Group.2[plotData$Group.1],plotData$x[plotData$Group.1], type="l", main="step taken on weekends", xlab="date", ylab="")
-plot(plotData$Group.2[!plotData$Group.1],plotData$x[!plotData$Group.1], type = "l", main="step taken on weekdays", xlab="date", ylab="")
+plot(plotData$Group.2[plotData$Group.1],plotData$x[plotData$Group.1], type="l", main="step taken on weekends", xlab="timeperiod", ylab="")
+plot(plotData$Group.2[!plotData$Group.1],plotData$x[!plotData$Group.1], type = "l", main="step taken on weekdays", xlab="timeperiod", ylab="")
 ```
 
 ![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
