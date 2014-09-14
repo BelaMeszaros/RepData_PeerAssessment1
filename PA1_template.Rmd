@@ -68,12 +68,10 @@ The medians are the same before and after imputation, but the average values are
 ```{r}
 Sys.setlocale("LC_TIME", "US") # Just for the case one runs this script on computer with different settings
 dataImputed$wd <- (weekdays(dataImputed$date) == "Saturday" | weekdays(dataImputed$date) == "Sunday")
-plotData <- aggregate(dataImputed$steps,by=list(dataImputed$wd, dataImputed$interval),FUN=sum)
+plotData <- aggregate(dataImputed$steps,by=list(dataImputed$wd, dataImputed$interval),FUN=mean)
 
 
-plot(plotData$Group.2,plotData$x,type="n", main="step taken on weekdays/weekends", xlab="date", ylab="")
-lines(plotData$Group.2[plotData$Group.1],plotData$x[plotData$Group.1], col="red")
-lines(plotData$Group.2[!plotData$Group.1],plotData$x[!plotData$Group.1], col="blue")
-text(x=1500,y=5000, labels="weekdays", col="blue", pos=2)
-text(x=2000,y=150, labels="weekends", col="red", pos=2)
+par(mfrow = c(2,1))
+plot(plotData$Group.2[plotData$Group.1],plotData$x[plotData$Group.1], type="l", main="step taken on weekends", xlab="date", ylab="")
+plot(plotData$Group.2[!plotData$Group.1],plotData$x[!plotData$Group.1], type = "l", main="step taken on weekdays", xlab="date", ylab="")
 ```
